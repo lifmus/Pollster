@@ -5,3 +5,25 @@
 Send <%= link_to "#{poll_url(@poll.id)}", poll_url(@poll.id)%> to the people you want to poll!
 <%end%>
 <p>
+
+<% poll_questions = @poll.questions.all%>
+<% poll_questions.each do |pq|%>
+<h3>Question: <%= pq.value%></h3>
+<%= "Your response: #{pq.response}" if pq.response != nil %>
+
+<% if pq.response == nil %>
+
+  <%= form_for(pq) do |pq|%>
+
+    <%= pq.label :response, "Enter the response to this question"%>
+    <%= pq.text_field :response%>
+
+    <br>
+    <%= pq.submit "Answer Question" %>
+
+  <% end %>
+<% end %>
+<%end%>
+
+
+

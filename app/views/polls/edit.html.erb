@@ -1,1 +1,35 @@
 <h1>The Edit Page for "<%= @poll.name%>"</h1>
+
+<h2>Create a new question</h2>
+
+<%= form_for(@question) do |question|%>
+
+  <%= question.text_field :value%>
+  <%= question.hidden_field :poll_id, :value => @poll.id %>
+
+  <br>
+  <%= question.submit "Submit" %>
+
+<% end%>
+
+
+<table>
+  <tr>
+    <th>Question</th>
+    <th>Response</th>
+    <th>Edit</th>
+    <th>Destroy</th>
+  </tr>
+
+  <% @poll.questions.each do |question| %>
+    <tr>
+      <td><%= question.value %></td>
+      <td><%= question.response %></td>
+      <td><%= button_to "edit", edit_question_path(question.id), :method => "get"%></td>
+       <td><%= button_to 'destroy', question, confirm: 'Are you sure?', :method => :delete %></td>
+    </tr>
+
+  <%end%>
+</table>
+
+<%= link_to "poll page", poll_path(@poll)%>

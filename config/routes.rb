@@ -1,4 +1,6 @@
 Pollster::Application.routes.draw do
+  resources :questions
+
   root :to => 'polls#new'
   match 'polls/edit/:slug/' => 'polls#edit', :via => [:get], :as => "edit_poll"
   resources :polls, :except => :edit

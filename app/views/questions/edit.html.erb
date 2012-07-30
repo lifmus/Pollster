@@ -1,0 +1,11 @@
+<h1>Edit this question</h1>
+
+<%= form_for(@question) do |question|%>
+
+  <%= question.label :value, "Edit this question"%>
+  <%= question.text_field :value%>
+
+  <br>
+  <%= question.submit "Update question" %>
+
+<% end%>

@@ -1,2 +1,7 @@
 <h1><%= @poll.name %></h1>
-<%= "This is the only time this link will appear! Write it down! Your edit link is #{edit_poll_url(@poll.slug)}" if Time.now - @poll.created_at < 1 %>
+<p><%if Time.now - @poll.created_at < 1 %>
+<%= "This is the only time this link will appear! Write it down! Your edit link is"%> <%= link_to "#{edit_poll_url(@poll.slug)}", edit_poll_path(@poll.slug)%>
+<br>
+Send <%= link_to "#{poll_url(@poll.id)}", poll_url(@poll.id)%> to the people you want to poll!
+<%end%>
+<p>

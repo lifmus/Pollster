@@ -9,6 +9,7 @@ gem 'sqlite3'
 gem 'less-rails-bootstrap'
 gem "less-rails", "~> 2.2.3"
 gem 'therubyracer'
+gem 'quiet_assets'
 
 
 # Gems used only for assets and not required

@@ -1,0 +1,2 @@
+<h1><%= @poll.name %></h1>
+<%= "This is the only time this link will appear! Write it down! Your edit link is #{edit_poll_url(@poll.slug)}" if Time.now - @poll.created_at < 1 %>

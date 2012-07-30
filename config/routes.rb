@@ -1,4 +1,7 @@
 Pollster::Application.routes.draw do
+  root :to => 'polls#new'
+  match 'polls/edit/:slug/' => 'polls#edit', :via => [:get], :as => "edit_poll"
+  resources :polls, :except => :edit
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

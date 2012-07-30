@@ -1,4 +1,6 @@
 Pollster::Application.routes.draw do
+  resources :answers
+
   resources :questions
 
   root :to => 'polls#new'

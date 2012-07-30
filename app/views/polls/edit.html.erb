@@ -16,7 +16,7 @@
 <table>
   <tr>
     <th>Question</th>
-    <th>Response</th>
+    <th>Responses</th>
     <th>Edit</th>
     <th>Destroy</th>
   </tr>
@@ -24,7 +24,10 @@
   <% @poll.questions.each do |question| %>
     <tr>
       <td><%= question.value %></td>
-      <td><%= question.response %></td>
+      <td><% question.answers.each do |answer|%>
+        <%= answer.value %><br>
+        <%end%>
+        </td>
       <td><%= button_to "edit", edit_question_path(question.id), :method => "get"%></td>
        <td><%= button_to 'destroy', question, confirm: 'Are you sure?', :method => :delete %></td>
     </tr>

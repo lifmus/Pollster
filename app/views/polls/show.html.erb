@@ -8,21 +8,20 @@ Send <%= link_to "#{poll_url(@poll.id)}", poll_url(@poll.id)%> to the people you
 
 <% poll_questions = @poll.questions.all%>
 <% poll_questions.each do |pq|%>
-<h3>Question: <%= pq.value%></h3>
-<%= "Your response: #{pq.response}" if pq.response != nil %>
+  <h3>Question: <%= pq.value%></h3>
+  <% answer = pq.answers.new %>
 
-<% if pq.response == nil %>
+    <%= form_for(answer) do |answer|%>
 
-  <%= form_for(pq) do |pq|%>
+      <%= answer.label :value, "Enter the response to this question"%>
+      <%= answer.text_field :value %>
+      <%= answer.hidden_field :question_id, :value => pq.id%>
 
-    <%= pq.label :response, "Enter the response to this question"%>
-    <%= pq.text_field :response%>
-
-    <br>
-    <%= pq.submit "Answer Question" %>
+      <br>
+      <%= answer.submit "Answer Question" %>
 
   <% end %>
-<% end %>
+
 <%end%>
 
 

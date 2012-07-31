@@ -1,6 +1,5 @@
 class ChoicesController < ApplicationController
   def create
-    warn "*********creating**"
   end
 
   def show

@@ -1,4 +1,6 @@
 Pollster::Application.routes.draw do
+  resources :choices
+
   resources :answers
 
   resources :questions

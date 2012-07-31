@@ -12,6 +12,7 @@ gem 'therubyracer'
 gem 'quiet_assets'
 
 
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -25,6 +26,16 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'rspec-rails'
+
+
+
+group :test, :development do
+  gem 'simplecov'
+  gem 'guard'
+  gem 'guard-rspec'
+  gem 'rspec'
+end
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

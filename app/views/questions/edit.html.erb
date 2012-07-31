@@ -8,4 +8,24 @@
   <br>
   <%= question.submit "Update question" %>
 
+
+  <% choice = @question.choices.new%>
+  <%= form_for(choice) do |choice|%>
+    <%= choice.label :value, "Create a choice"%>
+    <%= choice.text_field :value%>
+    <%= choice.hidden_field :question_id, :value => @question.id%>
+    <br>
+  <%= choice.submit "add choice"%>
+  <%end%>
+
+  <% @question.choices.each do |choice|%>
+    <%= form_for(choice) do |choice|%>
+      <%= choice.label :value, "Edit a choice"%>
+      <%= choice.text_field :value%>
+      <br>
+    <%= choice.submit "Confirm edit"%>
+    <%end%>
+
+  <%end%>
+
 <% end%>

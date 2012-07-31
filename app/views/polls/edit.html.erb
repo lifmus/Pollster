@@ -6,26 +6,13 @@
 
   <%= question.text_field :value%>
   <%= question.hidden_field :poll_id, :value => @poll.id %>
-  <%= select(question, :limited_choices, ([true,false])) %>
+  Open-ended Answer?<%= check_box_tag "question[limited_choices]", @question.limited_choices?%>
 
 
   <br>
   <%= question.submit "Submit" %>
 
 <% end%>
-
-<h2>Create a new multiple-choice question</h2>
-
-<%= form_for(@question) do |question|%>
-
-  <%= question.text_field :value%>
-  <%= question.hidden_field :poll_id, :value => @poll.id %>
-
-  <br>
-  <%= question.submit "Submit" %>
-
-<% end%>
-
 
 <table class="table table-bordered">
   <tr>
@@ -33,6 +20,7 @@
     <th>Responses</th>
     <th>Edit</th>
     <th>Destroy</th>
+    <th>Multiple Choice?</th>
   </tr>
 
   <% @poll.questions.each do |question| %>
@@ -44,6 +32,7 @@
         </td>
       <td><%= button_to "edit", edit_question_path(question.id), :method => "get"%></td>
        <td><%= button_to 'destroy', question, confirm: 'Are you sure?', :method => :delete %></td>
+       <td><%= question.limited_choices%>
     </tr>
 
   <%end%>

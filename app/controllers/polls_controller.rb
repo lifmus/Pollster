@@ -7,9 +7,7 @@ class PollsController < ApplicationController
   end
 
   def create
-    new_poll = Poll.new(params[:poll])
-    new_poll.create_slug
-    new_poll.save
+    new_poll = Poll.create(params[:poll])
     redirect_to :action => "show", :id => new_poll.id
   end
 

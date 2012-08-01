@@ -11,12 +11,11 @@ describe "Polls" do
 
   describe "#create_slug"do
     before(:each) do
-      @poll = Poll.new
-      @poll.create_slug
+      @poll = Fabricate(:poll)
     end
 
     it "creates a slug" do
-      @poll.create_slug.should be
+      @poll.slug.should_not be_nil
     end
 
     it "creates a slug that consists of 7 characters" do
@@ -26,7 +25,6 @@ describe "Polls" do
     it "creates a slug that only contains letters" do
       @poll.slug.should match /^[a-zA-Z]+$/
     end
-
 
   end
 

@@ -35,6 +35,8 @@ group :test, :development do
   gem 'guard'
   gem 'guard-rspec'
   gem 'rspec'
+  gem 'fabrication'
+  gem 'faker'
 end
 
 # To use ActiveModel has_secure_password
